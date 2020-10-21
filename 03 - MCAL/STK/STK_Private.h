@@ -17,9 +17,9 @@
 **/ 
 typedef struct{  
   
-          u32 CTRL ;        /* CTRL register enables STK features.*/
+                u32 CTRL ;        /* CTRL register enables STK features.*/
 	        u32 LOAD ;        /* LOAD register specifies the start value to load into the VAL register*/
-	        u32 VAL  ;	      /* VAL register contains the current value counter*/
+	        u32 VAL  ;	  /* VAL register contains the current value counter*/
 	        u32 CALIB;        /* CALIB register indicates calibration properties.*/
 }STK_TYPE;
 
