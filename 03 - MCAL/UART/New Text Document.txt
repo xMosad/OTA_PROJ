@@ -1,7 +1,0 @@
-// Configure number of data bits in the uart frame(8 bits).
-	CLR_BIT(UARTChannel[UART1]->CR1, M);
-	// Configure number of stop bits in the uart frame(1 stop bit).
-	CLR_BIT(UARTChannel[UART1]->CR1, STOP); 
-	// Configure parity state(no parity).
-	CLR_BIT(UARTChannel[UART1]->CR1, PCE);
-	// Configure uart mode receiver or transmitter or both.
