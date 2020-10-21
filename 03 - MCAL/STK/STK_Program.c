@@ -107,12 +107,12 @@ void MSTK_voidStopInterval(void)
 
 *Name       :   SysTick_Handler
 
-*Description: * Function to handler ISR OF STK
+*Description: * Handle STK ISR
               * Stop timer 
               * Clear LOAD,VAL Register  
-              * 
+              * Notify call back
 							
-*Pre-Cond   :	 load register must reach to zero			
+*Pre-Cond   :	 Value register must reach to zero			
 							
 *pos-Cond   :  Callback notification
 
