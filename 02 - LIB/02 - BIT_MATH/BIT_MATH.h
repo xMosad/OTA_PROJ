@@ -15,7 +15,7 @@
 
 #define    GET_BIT(REG,BIT)    ((REG>>BIT) & 1)
 
-#define    IS_CLEAR(REG,BIT)  (!(REG & (1<<BIT)))
+#define    IS_CLR(REG,BIT)  (!(REG & (1<<BIT)))
 
 #define    IS_SET(REG,BIT)     (REG & (1<<BIT))
 
