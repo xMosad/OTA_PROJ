@@ -48,8 +48,8 @@ void MSTK_voidInit(void)
               * Save Call Back address to pionter 
               * Enable STK interrrupt
 							
-*Pre-Cond   :	* Callback function should be in main				
-							* Create Void Pionter to save callback fun address
+*Pre-Cond   : * Callback function should be in main				
+	      * Create Void Pionter to save callback fun address
               * Copy_u32Ticks must be in micro seconds
 
 *pos-Cond   :   None
@@ -77,14 +77,14 @@ void MSTK_voidInit(void)
 
 *Name       :   STK_voidStopInterval
 
-*Description: * Fiction to Stop interval period
+*Description: * Function to Stop interval period
               * Disable STK Interrupt
               * Stop timer 
               * Clear LOAD,VAL Register   
 							
-*Pre-Cond   :	  None				
+*Pre-Cond   :  None				
 							
-*pos-Cond   :   None
+*pos-Cond   :  Counter is stopped
 
 *Input      :   void
 
