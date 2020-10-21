@@ -11,5 +11,7 @@
 #define    TOG_BIT(REG,BIT)    (REG ^= ( 1 << BIT))
 #define    IS_SET(REG,BIT)     (REG & (1<<BIT))
 #define    GET_BIT(REG,BIT)    ((REG>>BIT) & 1)
+#define    BIT_IS_CLEAR(REG,BIT) ( !(REG & (1<<BIT)) )
+
 
 #endif
