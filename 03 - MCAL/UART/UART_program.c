@@ -60,7 +60,7 @@
 *//** 
 * \b Description:
 *
-* This function is used to initialize the UART based on the configurations in UART_config. 
+* This function is used to initialize the UART. 
 *
 * PRE-CONDITION:  Configurations must be defined in UART_config.
 *
