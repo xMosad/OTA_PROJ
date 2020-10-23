@@ -56,7 +56,7 @@
  */
      
 
-#define UART_BAUDRATE                   UART_BAUDRATE_9600_CLK_1M
+#define UART_BAUDRATE                   UART_BAUDRATE_9600_CLK_8M
 /******************************************************************************
 * Configuration Constants
 *******************************************************************************/ 
