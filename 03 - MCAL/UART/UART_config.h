@@ -38,24 +38,29 @@
 //Different Modes
 #define UART_CLOCK_PHASE_CAP_SECOND     1
 #define UART_CLOCK_POLARITY_LOW         0
-// Baudrate Configuration
-// Clock: 1 MHz 
-#define UART_BAUDRATE_1200_CLK_1M       0X0341
-#define UART_BAUDRATE_2400_CLK_1M       0X01A0
-#define UART_BAUDRATE_4800_CLK_1M       0X00D0
-#define UART_BAUDRATE_9600_CLK_1M       0X0068
-#define UART_BAUDRATE_19200_CLK_1M      0X0034
-// Clock: 8 MHz 
-#define UART_BAUDRATE_1200_CLK_8M       0X1A0B
-#define UART_BAUDRATE_2400_CLK_8M       0X0D05
-#define UART_BAUDRATE_4800_CLK_8M       0X0683
-#define UART_BAUDRATE_9600_CLK_8M       0X0341
-#define UART_BAUDRATE_19200_CLK_8M      0X01A1
-// Choose your BaudRate.
+/**
+ * Choose your BaudRate
+ * Clock: 1 MHz 
+ * UART_BAUDRATE_1200_CLK_1M      
+ * UART_BAUDRATE_2400_CLK_1M      
+ * UART_BAUDRATE_4800_CLK_1M      
+ * UART_BAUDRATE_9600_CLK_1M       
+ * UART_BAUDRATE_19200_CLK_1M      
+ * Clock: 8 MHz 
+ * UART_BAUDRATE_1200_CLK_8M       
+ * UART_BAUDRATE_2400_CLK_8M      
+ * UART_BAUDRATE_4800_CLK_8M       
+ * UART_BAUDRATE_9600_CLK_8M       
+ * UART_BAUDRATE_19200_CLK_8M 
+ * 
+ */
+     
+
 #define UART_BAUDRATE                   UART_BAUDRATE_9600_CLK_1M
 /******************************************************************************
 * Configuration Constants
-*******************************************************************************/                          
+*******************************************************************************/ 
+// Turn on uart in transmitter and receiver mode.                         
 #define UART_Enable_TX_RX               3
 #define ENABLE_UART                     1
 // Applying Clock Phase and Clock Ploarity Mode.
