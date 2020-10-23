@@ -15,9 +15,9 @@ void MRCC_voidEnableClock(u8 Copy_u8BusId,u8 Copy_u8PerId){
 	{
 		switch (Copy_u8BusId)
 		{
-			case MRCC_AHB  : SET_BIT(RCC->AHBENR ,Copy_u8PerId);  break;			// Enables the clock of the required peripheral on AHB
-			case MRCC_APB1 : SET_BIT(RCC->APB1ENR ,Copy_u8PerId); break;			// Enables the clock of the required peripheral on APB1
-			case MRCC_APB2 : SET_BIT(RCC->APB2ENR ,Copy_u8PerId); break;			// Enables the clock of the required peripheral on APB2
+			case RCC_AHB  : SET_BIT(RCC->AHBENR ,Copy_u8PerId);  break;			// Enables the clock of the required peripheral on AHB
+			case RCC_APB1 : SET_BIT(RCC->APB1ENR ,Copy_u8PerId); break;			// Enables the clock of the required peripheral on APB1
+			case RCC_APB2 : SET_BIT(RCC->APB2ENR ,Copy_u8PerId); break;			// Enables the clock of the required peripheral on APB2
 		}
 	}
 	
@@ -33,9 +33,9 @@ void MRCC_voidDisableClock(u8 Copy_u8BusId,u8 Copy_u8PerId){
 	{
 		switch (Copy_u8BusId)
 		{
-			case MRCC_AHB  : CLR_BIT(RCC->AHBENR ,Copy_u8PerId);  break;			// Disables the clock of the required peripheral on AHB
-			case MRCC_APB1 : CLR_BIT(RCC->APB1ENR ,Copy_u8PerId); break;         // Disables the clock of the required peripheral on APB1
-			case MRCC_APB2 : CLR_BIT(RCC->APB2ENR ,Copy_u8PerId); break;         // Disables the clock of the required peripheral on APB2
+			case RCC_AHB  : CLR_BIT(RCC->AHBENR ,Copy_u8PerId);  break;			// Disables the clock of the required peripheral on AHB
+			case RCC_APB1 : CLR_BIT(RCC->APB1ENR ,Copy_u8PerId); break;         // Disables the clock of the required peripheral on APB1
+			case RCC_APB2 : CLR_BIT(RCC->APB2ENR ,Copy_u8PerId); break;         // Disables the clock of the required peripheral on APB2
 		}
 	}
 	
@@ -55,20 +55,20 @@ void MRCC_voidInitSysClock(void){
 	while( !(GET_BIT( RCC->CR , 1)) );
 
 	// Resets RCC_CFGR (Clock configuration register) & Selects HSI as System clock.
-	RCC->CFGR = MRCC_CR_RESET;
+	RCC->CFGR = RCC_CR_RESET;
 }
 
 void MRCC_voidResetRegisters(void){
 
-	RCC->CR 		= MRCC_CR_RESET 		;									// Resets Clock control register value
-	RCC->CFGR 		= MRCC_CFGR_RESET 		;									// Resets Clock configuration register value
-	RCC->CIR 		= MRCC_CIR_RESET 		;									// Resets Clock interrupt register value
-	RCC->APB2RSTR 	= MRCC_APB2RSTR_RESET 	;									// Resets APB2 peripheral reset register value
-	RCC->APB1RSTR 	= MRCC_APB1RSTR_RESET 	;									// Resets APB1 peripheral reset register value
-	RCC->AHBENR 	= MRCC_AHBENR_RESET 	;									// Resets AHB peripheral clock enable register value, disabling all AHB peripheral clocks
-	RCC->APB2ENR 	= MRCC_APB2ENR_RESET 	;									// Resets APB2 peripheral clock enable register value, disabling all APB2 peripheral clocks
-	RCC->APB1ENR	= MRCC_APB1ENR_RESET	;									// Resets APB1 peripheral clock enable register value, disabling all APB1 peripheral clocks
-	RCC->BDCR 		= MRCC_BDCR_RESET 		;									// Resets Backup domain control register value
-	RCC->CSR 		= MRCC_CSR_RESET 		;									// Resets Control/status register value
+	RCC->CR 		= RCC_CR_RESET 		;									// Resets Clock control register value
+	RCC->CFGR 		= RCC_CFGR_RESET 		;									// Resets Clock configuration register value
+	RCC->CIR 		= RCC_CIR_RESET 		;									// Resets Clock interrupt register value
+	RCC->APB2RSTR 	= RCC_APB2RSTR_RESET 	;									// Resets APB2 peripheral reset register value
+	RCC->APB1RSTR 	= RCC_APB1RSTR_RESET 	;									// Resets APB1 peripheral reset register value
+	RCC->AHBENR 	= RCC_AHBENR_RESET 	;									// Resets AHB peripheral clock enable register value, disabling all AHB peripheral clocks
+	RCC->APB2ENR 	= RCC_APB2ENR_RESET 	;									// Resets APB2 peripheral clock enable register value, disabling all APB2 peripheral clocks
+	RCC->APB1ENR	= RCC_APB1ENR_RESET	;									// Resets APB1 peripheral clock enable register value, disabling all APB1 peripheral clocks
+	RCC->BDCR 		= RCC_BDCR_RESET 		;									// Resets Backup domain control register value
+	RCC->CSR 		= RCC_CSR_RESET 		;									// Resets Control/status register value
 
 }
