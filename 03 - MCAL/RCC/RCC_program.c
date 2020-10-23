@@ -10,14 +10,14 @@
 #include "RCC_private.h"
 #include "RCC_config.h"
 
-void RCC_voidEnableClock(u8 Copy_u8BusId,u8 Copy_u8PerId){
+void MRCC_voidEnableClock(u8 Copy_u8BusId,u8 Copy_u8PerId){
 	if (Copy_u8PerId <=31)														// Checks if Peripheral is in the valid range		
 	{
 		switch (Copy_u8BusId)
 		{
-			case RCC_AHB  : SET_BIT(RCC->AHBENR ,Copy_u8PerId);  break;			// Enables the clock of the required peripheral on AHB
-			case RCC_APB1 : SET_BIT(RCC->APB1ENR ,Copy_u8PerId); break;			// Enables the clock of the required peripheral on APB1
-			case RCC_APB2 : SET_BIT(RCC->APB2ENR ,Copy_u8PerId); break;			// Enables the clock of the required peripheral on APB2
+			case MRCC_AHB  : SET_BIT(RCC->AHBENR ,Copy_u8PerId);  break;			// Enables the clock of the required peripheral on AHB
+			case MRCC_APB1 : SET_BIT(RCC->APB1ENR ,Copy_u8PerId); break;			// Enables the clock of the required peripheral on APB1
+			case MRCC_APB2 : SET_BIT(RCC->APB2ENR ,Copy_u8PerId); break;			// Enables the clock of the required peripheral on APB2
 		}
 	}
 	
@@ -28,14 +28,14 @@ void RCC_voidEnableClock(u8 Copy_u8BusId,u8 Copy_u8PerId){
 
 }
 
-void RCC_voidDisableClock(u8 Copy_u8BusId,u8 Copy_u8PerId){
+void MRCC_voidDisableClock(u8 Copy_u8BusId,u8 Copy_u8PerId){
 	if (Copy_u8PerId <=31)														// Checks if Peripheral is in the valid range
 	{
 		switch (Copy_u8BusId)
 		{
-			case RCC_AHB  : CLR_BIT(RCC->AHBENR ,Copy_u8PerId);  break;			// Disables the clock of the required peripheral on AHB
-			case RCC_APB1 : CLR_BIT(RCC->APB1ENR ,Copy_u8PerId); break;         // Disables the clock of the required peripheral on APB1
-			case RCC_APB2 : CLR_BIT(RCC->APB2ENR ,Copy_u8PerId); break;         // Disables the clock of the required peripheral on APB2
+			case MRCC_AHB  : CLR_BIT(RCC->AHBENR ,Copy_u8PerId);  break;			// Disables the clock of the required peripheral on AHB
+			case MRCC_APB1 : CLR_BIT(RCC->APB1ENR ,Copy_u8PerId); break;         // Disables the clock of the required peripheral on APB1
+			case MRCC_APB2 : CLR_BIT(RCC->APB2ENR ,Copy_u8PerId); break;         // Disables the clock of the required peripheral on APB2
 		}
 	}
 	
@@ -46,7 +46,7 @@ void RCC_voidDisableClock(u8 Copy_u8BusId,u8 Copy_u8PerId){
 
 }
 
-void RCC_voidInitSysClock(void){
+void MRCC_voidInitSysClock(void){
 
 	// Sets Bit 0 of RCC_CR (Clock control register) to enable HSI(Internal high-speed clock).
 	SET_BIT( RCC->CR,0 );
@@ -58,7 +58,7 @@ void RCC_voidInitSysClock(void){
 	RCC->CFGR = MRCC_CR_RESET;
 }
 
-void RCC_voidResetRegisters(void){
+void MRCC_voidResetRegisters(void){
 
 	RCC->CR 		= MRCC_CR_RESET 		;									// Resets Clock control register value
 	RCC->CFGR 		= MRCC_CFGR_RESET 		;									// Resets Clock configuration register value

@@ -10,9 +10,9 @@
 
 // Bus Id
 
-#define RCC_AHB			  0
-#define RCC_APB1		  1
-#define RCC_APB2		  2
+#define MRCC_AHB			  	0
+#define MRCC_APB2		  		2
+#define MRCC_APB1		  		1
 
 //peripheral id bits for AHB
 #define MRCC_DMA1_PERIPHERAL     0
@@ -75,35 +75,35 @@
 /*************************************************          Functions          **********************************************************/
 
 /****************************************************************************************************************************************/
-/* RCC_voidInitSysClock --> Initializes SYSCLK, Enabling and selecting the needed SYSCLK source and selecting the value of PLL if used.	*/
+/* MRCC_voidInitSysClock --> Initializes SYSCLK, Enabling and selecting the needed SYSCLK source and selecting the value of PLL if used.	*/
 /* I/P:- void (Takes the wanted values from RCC_config file).																			*/
 /* O/P:- void (Initializes SYSCLK).																										*/
-void RCC_voidInitSysClock(void);
+void MRCC_voidInitSysClock(void);
 /****************************************************************************************************************************************/
 
 /********************************************************************/
-/* RCC_voidEnableClock --> Enables Clock for a certain peripheral 	*/
+/* MRCC_voidEnableClock --> Enables Clock for a certain peripheral 	*/
 /* I/P:-  
 	Copy_u8BusId:- Id of the bus on which the peripheral is
 	Copy_u8PerId:- Id of the peripheral							  	*/
 /* O/P:- void(Enables Clock for a certain peripheral) 			  	*/
-void RCC_voidEnableClock(u8 Copy_u8BusId,u8 Copy_u8PerId);
+void MRCC_voidEnableClock(u8 Copy_u8BusId,u8 Copy_u8PerId);
 /********************************************************************/
 
 /********************************************************************/
-/* RCC_voidDisableClock --> Disables Clock for a certain peripheral	*/
+/* MRCC_voidDisableClock --> Disables Clock for a certain peripheral	*/
 /* I/P:-  
 	Copy_u8BusId:- Id of the bus on which the peripheral is
 	Copy_u8PerId:- Id of the peripheral							  	*/
 /* O/P:- void(Disables Clock for a certain peripheral) 			  	*/
-void RCC_voidDisableClock(u8 Copy_u8BusId,u8 Copy_u8PerId);
+void MRCC_voidDisableClock(u8 Copy_u8BusId,u8 Copy_u8PerId);
 /********************************************************************/
 
 /********************************************************************/
-/* RCC_voidResetRegisters --> Disables clock for all peripherals & Resets all RCC registers	*/
+/* MRCC_voidResetRegisters --> Disables clock for all peripherals & Resets all RCC registers	*/
 /* I/P:- void													  							*/
 /* O/P:- void 			  																	*/
-void RCC_voidResetRegisters(void);
+void MRCC_voidResetRegisters(void);
 /********************************************************************************************/
 
 /****************************************************************************************************************************************/
