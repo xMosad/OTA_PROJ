@@ -55,30 +55,6 @@
 * Function Definitions
 *******************************************************************************/
 
-/******************************************************************************
-* Function : MUART_voidInit()
-*//** 
-* \b Description:
-*
-* This function is used to initialize the UART. 
-*
-* PRE-CONDITION:  Configurations must be defined in UART_config.
-*
-* POST-CONDITION: None
-*
-* @param [in]     void
-* 
-* @return 		   void.
-*
-* \b Example Example:
-* @code
-* 	MUART_voidInit();
-*
-* @endcode
-*
-* @see MUART_voidInit
-*
-*******************************************************************************/
 void MUART_voidInit(void)
 {
 	// Configure uart1.
@@ -131,29 +107,7 @@ void MUART_voidTransmitSynch(u8 Copy_u8DataArray[])
 		Local_u8Counter++;
 	} 
 }
-/******************************************************************************
-* Function : MUART_u8ReceiveSynch()
-*//** 
-* \b Description:
-*
-* This function is used to receive data from UART peripheral. 
-*
-* PRE-CONDITION:  MUART_voidInit function must be called to initialize UART peripheral.
-*
-* POST-CONDITION: None
-*
-* @param [in_out] The address of variable that store the received value.
-* @return 		   The status of uart received value or not.
-*
-* \b Example Example:
-* @code
-* Local_u8RecordStatus = MUART_u8ReceiveSynch(&ReceivedValue);
-*
-* @endcode
-*
-* @see MUART_u8ReceiveSynch
-*
-*******************************************************************************/
+
 u8 MUART_u8ReceiveSynch( u8 * Copy_u8Data)
 {
 	u8 Local_u8State = 1;
