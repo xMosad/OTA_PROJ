@@ -34,5 +34,9 @@
 #define GPIOC_LCKR      *((volatile u32 *) 0x40011018 )
 
 #define      CLEAR_VALUE        15
+#define      NUM_BITS_CLEARED   4
+#define      FIRST_PINS_END     7
+#define      SECOND_PINS_END    15
+#define      PINS_OFFSET        8
 
 #endif

@@ -12,26 +12,26 @@
 #include "GPIO_private.h"
 #include "GPIO_config.h"
 
-void GPIO_voidSetPinMode (u8 copyPortId , u8 copyPinNumber , u8 copyMode  ) 
+void MGPIO_voidSetPinMode (u8 copyPortId , u8 copyPinNumber , u8 copyMode  ) 
 {
 	switch (copyPortId)
 	{
 		case PORTA : 
-			if (copyPinNumber <= 7)
+			if (copyPinNumber <= FIRST_PINS_END)
 			{
 				/* Clear the four bits first */
-				GPIOA_CRL &= ~ (CLEAR_VALUE << copyPinNumber * 4 ) ; 
+				GPIOA_CRL &= ~ (CLEAR_VALUE << copyPinNumber * NUM_BITS_CLEARED ) ; 
 				/* Update with mode value */
-				GPIOA_CRL |=   (copyMode    << copyPinNumber * 4 ) ;  
+				GPIOA_CRL |=   (copyMode    << copyPinNumber * NUM_BITS_CLEARED ) ;  
 			}
-			else if (copyPinNumber <= 15)
+			else if (copyPinNumber <= SECOND_PINS_END)
 			{
 				/* To get the right offest */
-				copyPinNumber = copyPinNumber - 8 ;
+				copyPinNumber = copyPinNumber - PINS_OFFSET ;
 				/* Clear the four bits first */
-				GPIOA_CRH &= ~ (CLEAR_VALUE << copyPinNumber * 4 ) ; 
+				GPIOA_CRH &= ~ (CLEAR_VALUE << copyPinNumber * NUM_BITS_CLEARED ) ; 
 				/* Update with mode value */
-				GPIOA_CRH |=   (copyMode    << copyPinNumber * 4 ) ; 
+				GPIOA_CRH |=   (copyMode    << copyPinNumber * NUM_BITS_CLEARED ) ; 
 			}
 			else
 			{
@@ -40,16 +40,16 @@ void GPIO_voidSetPinMode (u8 copyPortId , u8 copyPinNumber , u8 copyMode  )
 			break;
 			
 		case PORTB : 
-			if (copyPinNumber <= 7)
+			if (copyPinNumber <= FIRST_PINS_END)
 			{
-				GPIOB_CRL &= ~ (CLEAR_VALUE << copyPinNumber * 4 ) ; 
-				GPIOB_CRL |=   (copyMode    << copyPinNumber * 4 ) ; 
+				GPIOB_CRL &= ~ (CLEAR_VALUE << copyPinNumber * NUM_BITS_CLEARED ) ; 
+				GPIOB_CRL |=   (copyMode    << copyPinNumber * NUM_BITS_CLEARED ) ; 
 			}
-			else if (copyPinNumber <= 15)
+			else if (copyPinNumber <= SECOND_PINS_END)
 			{
-				copyPinNumber = copyPinNumber - 8 ;
-				GPIOB_CRH &= ~ (CLEAR_VALUE << copyPinNumber * 4 ) ;
-				GPIOB_CRH |=   (copyMode    << copyPinNumber * 4 ) ; 
+				copyPinNumber = copyPinNumber - PINS_OFFSET ;
+				GPIOB_CRH &= ~ (CLEAR_VALUE << copyPinNumber * NUM_BITS_CLEARED ) ;
+				GPIOB_CRH |=   (copyMode    << copyPinNumber * NUM_BITS_CLEARED ) ; 
 			}
 			else 
 			{
@@ -58,16 +58,16 @@ void GPIO_voidSetPinMode (u8 copyPortId , u8 copyPinNumber , u8 copyMode  )
 			break;
 			
 		case PORTC : 
-			if (copyPinNumber <= 7)
+			if (copyPinNumber <= FIRST_PINS_END)
 			{
-				GPIOC_CRL &= ~ (CLEAR_VALUE << copyPinNumber * 4 ) ; 
-				GPIOC_CRL |=   (copyMode    << copyPinNumber * 4 ) ; 
+				GPIOC_CRL &= ~ (CLEAR_VALUE << copyPinNumber * NUM_BITS_CLEARED ) ; 
+				GPIOC_CRL |=   (copyMode    << copyPinNumber * NUM_BITS_CLEARED ) ; 
 			}
-			else if (copyPinNumber <= 15)
+			else if (copyPinNumber <= SECOND_PINS_END)
 			{
-				copyPinNumber = copyPinNumber - 8 ;
-				GPIOC_CRH &= ~ (CLEAR_VALUE << copyPinNumber * 4 ) ; 
-				GPIOC_CRH |=   (copyMode    << copyPinNumber * 4 ) ; 
+				copyPinNumber = copyPinNumber - PINS_OFFSET ;
+				GPIOC_CRH &= ~ (CLEAR_VALUE << copyPinNumber * NUM_BITS_CLEARED ) ; 
+				GPIOC_CRH |=   (copyMode    << copyPinNumber * NUM_BITS_CLEARED ) ; 
 			}
 			else
 			{
@@ -80,7 +80,7 @@ void GPIO_voidSetPinMode (u8 copyPortId , u8 copyPinNumber , u8 copyMode  )
 	}
 }
 
-void GPIO_voidSetPinValue (u8 copyPortId , u8 copyPinNumber , u8 copy_u8Value){
+void MGPIO_voidSetPinValue (u8 copyPortId , u8 copyPinNumber , u8 copy_u8Value){
 	switch (copyPortId)
 	{
 		case PORTA :
@@ -135,7 +135,7 @@ void GPIO_voidSetPinValue (u8 copyPortId , u8 copyPinNumber , u8 copy_u8Value){
 }
 
 
-u8 GPIO_u8GetPinValue (u8 copyPortId , u8 copyPinNumber)
+u8 MGPIO_u8GetPinValue (u8 copyPortId , u8 copyPinNumber)
 {
 	/* Local variable To store the value of the bit */
 	u8 Local_u8bitValue = 0 ;

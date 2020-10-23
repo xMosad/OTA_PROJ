@@ -68,35 +68,38 @@
 /*********************************************************************************/
 
 /*****************************************************************************
-* Function       : GPIO_voidSetPinMode()
+* Function       : MGPIO_voidSetPinMode()
 * Description    : This function is used to initialize the GPIO pins based on the 
 *                  mode the user will pass to the function .
 * PRE-CONDITION  : RCC must be enabled for the GPIO peripheral 
 * POST-CONDITION : None
 * @param [in]    : (u8) ID of the port , (u8) number of pin , (u8) mode
 * @return        :  void
+* Examble        : MGPIO_voidSetPinMode (PORTA , PIN0 , GPIO_OUTPUT_2MHZ_PP );
 *****************************************************************************/
-void GPIO_voidSetPinMode (u8 copyPortId , u8 copyPinNumber , u8 copyMode  );
+void MGPIO_voidSetPinMode (u8 copyPortId , u8 copyPinNumber , u8 copyMode  );
 
 /*****************************************************************************
-* Function       : GPIO_voidSetPinValue()
+* Function       : MGPIO_voidSetPinValue()
 * Description    : This function is used to change the GPIO pins value 
 * PRE-CONDITION  : Pin must be initialized first using GPIO_voidSetPinMode()
 * POST-CONDITION : None
 * @param [in]    : (u8) ID of the port , (u8) number of pin , (u8) value [ 1 or 0]
 * @return        :  void
+* Examble        : MGPIO_voidSetPinValue (PORTA , PIN0 , GPIO_HIGH );
 *****************************************************************************/
-void GPIO_voidSetPinValue (u8 copyPortId , u8 copyPinNumber , u8 copy_u8Value);
+void MGPIO_voidSetPinValue (u8 copyPortId , u8 copyPinNumber , u8 copy_u8Value);
 
 /*****************************************************************************
-* Function       : GPIO_u8GetPinValue()
+* Function       : MGPIO_u8GetPinValue()
 * Description    : This function is used to get the pin value in case it was input
 * PRE-CONDITION  : Pin must be initialized first using GPIO_voidSetPinMode()
 * POST-CONDITION : None
 * @param [in]    : (u8) ID of the port , (u8) number of pin 
 * @return        : (u8) Pin value [1 or 0]
+* Examble        : u8 x = MGPIO_u8GetPinValue (PORTA , PIN0);
 *****************************************************************************/
-u8 GPIO_u8GetPinValue (u8 copyPortId , u8 copyPinNumber);
+u8 MGPIO_u8GetPinValue (u8 copyPortId , u8 copyPinNumber);
 
 
 #endif
