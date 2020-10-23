@@ -11,130 +11,64 @@
 
 /* Define Callback Global Variable */
 static void(*MSTK_CallBack)(void);
-
-/************************************************************************************
-
-*Name       :   MSTK_voidInit
-
-*Description: * Function to Set STK config
-              * Disable STK Enable
-              * Disable STK Interrupt 
-              * Set input Clk of STK  
-							
-*Pre-Cond   :	None				
-							
-*pos-Cond   : None
-
-*Input      : void
-
-*Output     : void
-
-*Return     : void
-
-****************************************************************************************/
+/*************************************************************************************
+                             *****Functions Definitions********
+**************************************************************************************/
 void MSTK_voidInit(void)
 {               
   
-   STK->CTRL = STK_Init ; //Disable STK , Disable STK Interrupt , Set Clock to AHB/8
+    //Disable STK , Disable STK Interrupt , Set Clock to AHB/8	
+   STK->CTRL = STK_Init ;
 	
 }
-/****************************************************************************************
 
-*Name       :   MSTK_voidSetIntervalSingle
 
-*Description: * Function to cause interrupt for once
-              * Load Counter By Ticks number in micro Second 
-              * Start Counter 
-              * Save Call Back address to pionter 
-              * Enable STK interrrupt
-							
-*Pre-Cond   : * Callback function should be in main				
-	      * Create Void Pionter to save callback fun address
-              * Copy_u32Ticks must be in micro seconds
-
-*pos-Cond   :   None
-
-*Input      :   Ticks number to counter in micro , address of call back function
-
-*Output     :   void
-
-*Return     :   void
-
-*******************************************************************************************/
-
- void MSTK_voidSetIntervalSingle  ( u32 Copy_u32Ticks, void (*Copy_ptr)(void) )
- { 
-	 																	 
-	STK -> LOAD = Copy_u32Ticks;           //Load counter register by input ticks
-																			 
-	SET_BIT(STK -> CTRL , EN);           // Start count
+void MSTK_voidSetIntervalSingle  ( u32 Copy_u32Ticks, void (*Copy_ptr)(void) )
+{ 
 	
-	MSTK_CallBack = Copy_ptr;            // Save call back address 
-		
-	SET_BIT(STK -> CTRL , INT_EN);          //Enable STK interrupt 
+	//Load counter register by input ticks 																	 
+	STK -> LOAD = Copy_u32Ticks;           
+	
+        // Start count
+	SET_BIT(STK -> CTRL , EN);          
+	
+	// Save call back address
+	MSTK_CallBack = Copy_ptr;             
+	
+	//Enable STK interrupt
+	SET_BIT(STK -> CTRL , INT_EN);           
 } 
-/************************************************************************************
 
-*Name       :   STK_voidStopInterval
-
-*Description: * Function to Stop interval period
-              * Disable STK Interrupt
-              * Stop timer 
-              * Clear LOAD,VAL Register   
-							
-*Pre-Cond   :  None				
-							
-*pos-Cond   :  Counter is stopped
-
-*Input      :   void
-
-*Output     :   void
-
-*Return     :   void
-
-****************************************************************************************/
 void MSTK_voidStopInterval(void)          
 {
+	// Disable STK Interrupt
+	CLR_BIT( STK -> CTRL , INT_EN);      
 	
-	CLR_BIT( STK -> CTRL , INT_EN);      // Disable STK Interrupt
+	// Stop timer
+	CLR_BIT( STK -> CTRL , EN);         
 	
-	CLR_BIT( STK -> CTRL , EN);         // Stop timer
+	// Clear loaded register
+	STK -> LOAD   = 0;
 	
-	STK -> LOAD   = 0;             // Clear loaded register
-	STK -> VAL  = 0;             // Clear value register
+	// Clear value register
+	STK -> VAL  = 0;            
 }
-/************************************************************************************
-
-*Name       :   SysTick_Handler
-
-*Description: * Handle STK ISR
-              * Stop timer 
-              * Clear LOAD,VAL Register  
-              * Notify call back
-							
-*Pre-Cond   :	 Value register must reach to zero			
-							
-*pos-Cond   :  Callback notification
-
-*Input      :   void
-
-*Output     :   void
-
-*Return     :   void
-
-****************************************************************************************/
 
 void SysTick_Handler(void)  	
 {
-	 	
-		CLR_BIT( STK -> CTRL , INT_EN);    //Disable interrupt
+	//Disable interrupt
+        CLR_BIT( STK -> CTRL , INT_EN);    
 	
-		SET_BIT( STK -> CTRL , EN);         //Stop timer
-			                       
-		STK -> LOAD = 0;                  // Clear loaded register
-		STK -> VAL  = 0;                // Clear value register
+      //Stop timer
+      SET_BIT( STK -> CTRL , EN);         
+		
+      // Clear loaded register
+      STK -> LOAD = 0;  
+	
+     // Clear value register
+     STK -> VAL  = 0;                
  		
-	
-		MSTK_CallBack();                 // Notify call back function
+      // Notify call back function	
+      MSTK_CallBack();                 
 	
 }
