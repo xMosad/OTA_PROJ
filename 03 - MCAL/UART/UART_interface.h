@@ -67,8 +67,80 @@
 /******************************************************************************
 * Function Prototypes
 *******************************************************************************/
+
+/******************************************************************************
+* Function : MUART_voidInit()
+*//** 
+* \b Description:
+*
+* This function is used to initialize the UART based on the configurations in UART_config. 
+*
+* PRE-CONDITION:  Configurations must be defined in UART_config.
+*
+* POST-CONDITION: None
+*
+* @param [in]     void
+* 
+* @return 		   void.
+*
+* \b Example Example:
+* @code
+* 	MUART_voidInit();
+*
+* @endcode
+*
+* @see MUART_voidInit
+*
+*******************************************************************************/
 void MUART_voidInit(void);
+/******************************************************************************
+* Function : MUART_voidTransmitSynch()
+*//** 
+* \b Description:
+*
+* This function is used to transmit an array by UART peripheral. 
+*
+* PRE-CONDITION:  MUART_voidInit function must be called to initialize UART peripheral.
+*
+* POST-CONDITION: None
+*
+* @param [in]     Array address tha contain data that will be sent.
+* 
+* @return 		   void.
+*
+* \b Example Example:
+* @code
+* 	MUART_voidTransmitSynch(&Local_u8DataArray);
+*
+* @endcode
+*
+* @see MUART_voidTransmitSynch
+*
+*******************************************************************************/
 void MUART_voidTransmitSynch(u8 Copy_u8DataArray[]);
+/******************************************************************************
+* Function : MUART_u8ReceiveSynch()
+*//** 
+* \b Description:
+*
+* This function is used to receive data from UART peripheral. 
+*
+* PRE-CONDITION:  MUART_voidInit function must be called to initialize UART peripheral.
+*
+* POST-CONDITION: None
+*
+* @param [in_out] The address of variable that store the received value.
+* @return 		   The status of uart received value or not.
+*
+* \b Example Example:
+* @code
+* Local_u8RecordStatus = MUART_u8ReceiveSynch(&ReceivedValue);
+*
+* @endcode
+*
+* @see MUART_u8ReceiveSynch
+*
+*******************************************************************************/
 u8   MUART_u8ReceiveSynch(u8 * Copy_u8Data);
 
 #endif /*File_H_*/
