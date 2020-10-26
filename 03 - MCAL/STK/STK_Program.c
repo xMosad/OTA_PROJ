@@ -4,7 +4,7 @@
 /***********version:2***************************************/
 /***********************************************************/
 #include "STD_TYPES.h"
-#include "MATH_BIT.h"
+#include "BIT_MATH.h"
 #include "STK_Interface.h"
 #include "STK_Config.h"
 #include "STK_Private.h"
