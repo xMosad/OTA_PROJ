@@ -55,7 +55,7 @@ void MRCC_voidInitSysClock(void){
 	while( !(GET_BIT( RCC->CR , 1)) );
 
 	// Resets RCC_CFGR (Clock configuration register) & Selects HSI as System clock.
-	RCC->CFGR = RCC_CR_RESET;
+	RCC->CFGR = RCC_CFGR_RESET;
 }
 
 void MRCC_voidResetRegisters(void){
