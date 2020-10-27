@@ -92,7 +92,6 @@ void MFPEC_u8ProgramFlash(u32 Copy_u32Address, u16 * Copy_u16Code, u8 Copy_u8Len
       Copy_u32Address += TWO_BYTE;
       // Wait for the BSY bit to be reset.
       while(GET_BIT(FPEC->SR, BSY) == SET);
-
       CLR_BIT(FPEC->CR, PG);
    }
 }
