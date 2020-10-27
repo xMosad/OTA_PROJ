@@ -116,8 +116,7 @@ void MFPEC_voidErasePage(u16 Copy_u16PageNumber)
    SET_BIT(FPEC->CR, STRT);
    /*Wait for the BSY bit to be reset*/
    while(GET_BIT(FPEC->SR, BSY) == SET);
-   // End of programming.
-   SET_BIT(FPEC->SR, EOP);
+
    CLR_BIT(FPEC->CR, PER);
 }
 void MFPEC_voidEraseAppArea(void)
